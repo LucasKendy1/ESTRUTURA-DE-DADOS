@@ -14,3 +14,4 @@ SERVE PARA CONTROLAR AS CHAMADAS E RETORNOS DE FUNÇÕES
 
 typedef int/char Itemp - mudar o tipo de variavel na lib pilha.h
 
+for(int i=0; c[i]; i++) 	// para perceorrer o vetor inteiro e parar sozinho
