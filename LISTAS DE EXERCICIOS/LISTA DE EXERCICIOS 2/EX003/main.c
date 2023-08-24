@@ -1,44 +1,41 @@
 /*
     Usando uma pilha, crie um programa para inverter a ordem das letras nas palavras de uma frase,
     sem inverter a ordem das palavras na frase. Por exemplo, se for     digitada a frase "apenas um
-    teste", o programa deverÃ¡ produzir a seguinte saÃ­da: sanepa mu etset.
+    teste", o programa deverá produzir a seguinte saída: sanepa mu etset.
 */
 
 #include <stdio.h>
 #include "pilha.h"
 #include <string.h>
 
-void reverse(char *palavra){
-    int x = strlen(palavra);
+char reverse(char *palavra, int x){
+     int i;
     Pilha X = pilha(x * sizeof(int));
-    for(int i = 0; i < x; i++){
+    for(i = 0; i < x; i++){
         empilha(palavra[i],X);
     }
 
-    for(int i = 0; i < x; i++){
+    for (i = 0; i < x; i++){
         palavra[i]=desempilha(X);
-        printf("%c", palavra[i]);
     }
-    printf(" ");
+    return *palavra;
 }
 
 
 int main()
 {
     char txt[100];
-    char *palavra;
+
     printf("Digite uma frase: \n");
     gets(txt);
 
     int x = strlen(txt);
     char frase[x];
-    strcpy(frase,txt);
+    strcpy(txt,frase);
+    printf("%s", frase);
     
-    palavra = strtok(frase, " ");
-
-    while(palavra != NULL){
-        reverse(palavra);
-        palavra = strtok(NULL, " ");
-    }
+    // reverse(*frase,x);
+    // printf("%s", frase);  
+    
     return 0;
 }

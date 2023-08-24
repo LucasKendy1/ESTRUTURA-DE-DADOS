@@ -8,6 +8,7 @@ expressões "{[(}])" e "{[)()(]}" não estão.
 #include <stdio.h>
 #include "pilha.h"
 #include <string.h>
+
 int main(){
     int tamanhoExpressao;
     char x;
