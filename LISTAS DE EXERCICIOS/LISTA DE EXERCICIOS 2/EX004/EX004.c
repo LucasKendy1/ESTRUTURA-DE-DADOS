@@ -11,17 +11,20 @@ expressões "{[(}])" e "{[)()(]}" não estão.
 
 int main(){
     int tamanhoExpressao;
-    char x;
+    
     printf("Verificador de balanceamento de expressoes\n ");
     printf("Digite o tamanho da expressao: ");
     scanf("%d", &tamanhoExpressao);
-    Pilha P = pilha(tamanhoExpressao);
+    // Pilha P = pilha(tamanhoExpressao);
+    char x[tamanhoExpressao];
 
     for(int i=0; i < tamanhoExpressao; i++){
         printf("Digite uma chave, parenteses ou colchetes: ");
-        gets(x);
-        empilha(x,P);
+        scanf("%c", &x[i]);
+        printf("%c", x[i]); 
     }
-    
+
+    // for (int i=0; i < tamanhoExpressao; i++){
+    // }
     return 0;
 }

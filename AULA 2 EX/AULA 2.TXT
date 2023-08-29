@@ -1,0 +1,69 @@
+--------EXPRESSÕES----------
+
++-*/
+(){}[]
+
+-------------------
+NOTAÇÕES: 
+    - INFIXA A+B
+    - PREFIXA + A B
+    - POSFIXA A B +
+-------------------
+
+2 * 3 + 8 / 4
+((2 * 3) + (8 / 4))
+2 3 * 8 4 / +
+
+IF (+ OU - OU * OU /){ 
+    EMPILHA(EXPRESSAO, P)
+}
+
+    _ _ -
+    N N E
+
+EMPILHA
+EMPILHA
+EXPRESSAO
+DESEMPILHA E CALCULA
+EMPILHA
+EMPILHA
+DESEMPILHA E CALCULA
+
+int main(){
+
+    Pilha P = pilha(256);
+    char e[];
+    char s[256];
+
+    printf("Infixa?");
+    gets(e);
+    printf(posfixa(e));
+
+    for(int i=0; i<tamanho; i++){
+        if(e[i]=="("){
+            descartar
+        }
+        if(v[i]==0,1,2,3,4,5,6,7,8,9){
+            s=e[i]
+        }
+        if(v[i]==+-*/){
+            empilha(e[i],P;)
+        }
+        if(e[i]==")"){
+            s[i]=desempilha(P);
+        }
+    }
+
+}
+
+//ALGORITMO DE CONVERSÃO DE INFIXA PARA POSFIXA
+
+//ALGORITMO DE RESOLUÇÃO DE EXPRESSÕES POSFIXA
+
+EX 3 - JUNTAR OS DOIS ALGORITMOS ACIMA
+
+EX 4 - REFAZER OS ALGORITMOS PARA ATENDER NO FORMATO BOOLEANO
+
+EX 5 - FAZER O ALGORITMO DE CONVERSAO INFIXA - POSFIXA E INVERTE, DA DIREITA PRA ESQUERDA
+
+EX 6 - FUNÇÃO QUE RESOLVE O EX 5
