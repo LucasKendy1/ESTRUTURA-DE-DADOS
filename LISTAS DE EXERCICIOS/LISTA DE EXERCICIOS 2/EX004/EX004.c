@@ -4,27 +4,44 @@ colchetes e parênteses, representada por uma cadeia de caracteres, está ou nã
 exemplo, as expressões "[{()()}{}]" e "{[([{}])]}" estão balanceadas, mas as
 expressões "{[(}])" e "{[)()(]}" não estão.
 */
-
 #include <stdio.h>
-#include "pilha.h"
-#include <string.h>
+#include <stdlib.h>
+#include <stdbool.h>
 
-int main(){
-    int tamanhoExpressao;
-    
-    printf("Verificador de balanceamento de expressoes\n ");
-    printf("Digite o tamanho da expressao: ");
-    scanf("%d", &tamanhoExpressao);
-    // Pilha P = pilha(tamanhoExpressao);
-    char x[tamanhoExpressao];
+bool isMatchingPair(char opening, char closing) {
+    return (opening == '(' && closing == ')') ||
+           (opening == '[' && closing == ']') ||
+           (opening == '{' && closing == '}');
+}
 
-    for(int i=0; i < tamanhoExpressao; i++){
-        printf("Digite uma chave, parenteses ou colchetes: ");
-        scanf("%c", &x[i]);
-        printf("%c", x[i]); 
+bool isBalancedExpression(const char *expression) {
+    Stack stack;
+    initialize(&stack);
+
+    for (int i = 0; expression[i] != '\0'; i++) {
+        if (expression[i] == '(' || expression[i] == '[' || expression[i] == '{') {
+            push(&stack, expression[i]);
+        } else if (expression[i] == ')' || expression[i] == ']' || expression[i] == '}') {
+            if (isEmpty(&stack) || !isMatchingPair(stack.data[stack.top], expression[i])) {
+                return false;
+            }
+            pop(&stack);
+        }
     }
 
-    // for (int i=0; i < tamanhoExpressao; i++){
-    // }
+    return isEmpty(&stack);
+}
+
+int main() {
+    const char *expression1 = "[{()()}{}]";
+    const char *expression2 = "{[([{}])]}";
+    const char *expression3 = "{[(}])";
+    const char *expression4 = "{[)()(]}";
+
+    printf("%s is %sbalanced.\n", expression1, isBalancedExpression(expression1) ? "" : "not ");
+    printf("%s is %sbalanced.\n", expression2, isBalancedExpression(expression2) ? "" : "not ");
+    printf("%s is %sbalanced.\n", expression3, isBalancedExpression(expression3) ? "" : "not ");
+    printf("%s is %sbalanced.\n", expression4, isBalancedExpression(expression4) ? "" : "not ");
+
     return 0;
 }
