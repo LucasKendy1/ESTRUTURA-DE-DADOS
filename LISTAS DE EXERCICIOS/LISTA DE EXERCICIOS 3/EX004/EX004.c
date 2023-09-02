@@ -27,8 +27,8 @@ int Opou(char x, char y){
    else{
       return 0;
    }
-   printf("%d",x);
-   printf("%d\n",y);
+   // printf("%d",x);
+   // printf("%d\n",y);
 }
 
 int Ope(char x, char y){
@@ -40,14 +40,14 @@ int Ope(char x, char y){
    else{
       return 0;
    }
-   printf("%d",x);
-   printf("%d\n",y);
+   // printf("%d",x);
+   // printf("%d\n",y);
 }
 
 int OpInv(char x){
    if(x=='V')x=0;
    if(x=='F')x=1;
-   printf("%d",x);
+   // printf("%d",x);
    return x;
 }
 
@@ -59,12 +59,12 @@ int valor(char *e) {
          printf("%c",e[i]);
          empilha(e[i],P);
       }
-      
       else {
          if(e[i]=='!'){
             int x = desempilha(P);
             empilha(OpInv(x),P);
          }
+         
          int y = desempilha(P);
          int x = desempilha(P);
          
@@ -72,12 +72,12 @@ int valor(char *e) {
             case '|': empilha(Opou(x,y),P); break;
             case '&': empilha(Ope(x,y),P); break;
          }
+         
       }	
    }
-      
-   int z = desempilha(P);
-   destroip(&P);
-   return z;
+   
+   // destroip(&P);
+   return desempilha(P);
 }
 
 int prio(char o) {

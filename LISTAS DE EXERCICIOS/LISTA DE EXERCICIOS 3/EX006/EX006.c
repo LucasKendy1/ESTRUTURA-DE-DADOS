@@ -46,7 +46,7 @@ int charInt(int x)
 
 int valpre(char *e)
 {
-   printf("\n%s\n", e);
+   // printf("\n%s\n", e);
    // char s[256];
    Pilha R = pilha(256);
    int j = strlen(e);
@@ -56,18 +56,18 @@ int valpre(char *e)
       if (isdigit(e[i]))
       {
          empilha(e[i], R);                      //      R[4,8]
-         printf("Estou empilhando %c\n", e[i]); // R["4","8"]
+         // printf("Estou empilhando %c\n", e[i]); // R["4","8"]
       }
       else if (strchr("+*-/", e[i]))
       {
-         printf("O operador eh: %c\n", e[i]);
+         // printf("O operador eh: %c\n", e[i]);
 
          int a = desempilha(R);
          int b = desempilha(R);
          int x = charInt(a);
          int y = charInt(b);
-         printf("X : %d\n", x);
-         printf("Y : %d\n", y);
+         // printf("X : %d\n", x);
+         // printf("Y : %d\n", y);
         
          int c=0;
          switch (e[i])
@@ -89,7 +89,7 @@ int valpre(char *e)
             empilha(c+'0', R);
             break;
          }
-         printf("O topo de R: %c\n", topo(R));
+         // printf("O topo de R: %c\n", topo(R));
       }
    }
    int z = desempilha(R);

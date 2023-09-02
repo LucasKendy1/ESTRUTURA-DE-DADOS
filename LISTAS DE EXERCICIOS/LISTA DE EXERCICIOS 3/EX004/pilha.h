@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-typedef char Itemp;
+typedef int Itemp;
 
 typedef struct pilha {
    int    max;
