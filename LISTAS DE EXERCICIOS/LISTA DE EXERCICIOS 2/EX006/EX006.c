@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "pilha.h" // pilha de char *
+#include "pilha.h" 
 #include <string.h>
 
 int main(void)

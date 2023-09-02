@@ -116,7 +116,7 @@ char *posfixa(char *e) {
 
 int main(void) {
    char e[513];
-   printf("Infixa? ");
+   printf("Infixa booleana? ");
    gets(e);
    printf("Posfixa: %s\n", posfixa(e));
    printf("Resultado: %d", valor(posfixa(e)));
