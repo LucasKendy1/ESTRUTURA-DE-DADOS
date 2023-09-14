@@ -18,104 +18,46 @@
 #include <string.h>
 #include "pilha.h"
 
-char Opou(char x, char y)
-{
-   int a, b;
-   
-   if (x == 'V')
-      a = 1;
-   else
-      a = 0;
-   if (y == 'V')
-      b = 1;
-   else
-      b = 0;
-   if (a == 1 || b == 1)
-   {
-      return *A;
-   }
-   else
-   {
-      return "F";
-   }
-   // printf("%d", x);
-   // printf("%d\n", y);
-}
+// int valor(char *e)
+// {
+//    Pilha P = pilha(256);
+//    for (int i = 0; e[i]; i++)
+//    {
+//       // printf("%c", e[i]);
+//       if (e[i] == 'V' || e[i] == 'F')
+//       {
+//          // printf("%c",e[i]);
+//          empilha(e[i], P);
+//       }
+//       else
+//       {
+//          if (e[i] == '!')
+//          {
+//             int x = desempilha(P);
+//             empilha(OpInv(x), P);
+//             // printf("%d\n", topo(P));
+//          }
+//          else
+//          {
+//             int y = desempilha(P); // F
+//             int x = desempilha(P); // V
 
-char Ope(char x, char y)
-{
-   int a, b;
-   if (x == 'V')
-      a = 1;
-   else
-      a = 0;
-   if (y == 'V')
-      b = 1;
-   else
-      b = 0;
-   if (a == 1 && b == 1)
-   {
-      return "V";
-   }
-   else
-   {
-      return "F";
-   }
-   printf("%c", x);
-   printf("%c\n", y);
-}
-
-char OpInv(char x)
-{
-   if (x == 'V')
-      x = "F";
-   if (x == 'F')
-      x = "V";
-   // printf("%d", x);
-   return x;
-}
-// P=[V]
-// i=5
-char valor(char *e)
-{
-   Pilha P = pilha(256);
-   for (int i = 0; e[i]; i++)
-   {
-      // printf("%c", e[i]);
-      if (e[i] == 'V' || e[i] == 'F')
-      {
-         // printf("%c",e[i]);
-         empilha(e[i], P);
-      }
-      else
-      {
-         if (e[i] == '!')
-         {
-            int x = desempilha(P);
-            empilha(OpInv(x), P);
-            // printf("%d\n", topo(P));
-         }
-         else
-         {
-            int y = desempilha(P); // F
-            int x = desempilha(P); // V
-
-            switch (e[i])
-            {
-            case '|':
-               empilha(Opou(x, y), P);
-               break;
-            case '&':
-               empilha(Ope(x, y), P);
-               break;
-            }
-         }
-      }
-   }
-   char z = desempilha(P);
-   destroip(&P);
-   return z;
-}
+//             switch (e[i])
+//             {
+//             case '|':
+//                empilha(Opou(x, y), P);
+//                break;
+//             case '&':
+//                empilha(Ope(x, y), P);
+//                break;
+//             }
+//          }
+//       }
+//    }
+//    char z = desempilha(P);
+//    destroip(&P);
+//    return z;
+// }
 
 int prio(char o)
 {
@@ -140,8 +82,10 @@ char *posfixa(char *e)
    for (int i = 0; e[i]; i++)
       if (e[i] == '(')
          empilha('(', P);
-      else if (e[i] == 'V' || e[i] == 'F')
-         s[j++] = e[i];
+      else if (e[i] == 'V')
+         s[j++] = 1;
+      else if (e[i] == 'F')
+         s[j++] = 0;
       else if (strchr("!&|", e[i]))
       {
          while (!vaziap(P) && prio(topo(P)) >= prio(e[i]))
@@ -157,6 +101,9 @@ char *posfixa(char *e)
    while (!vaziap(P))
       s[j++] = desempilha(P);
    s[j] = '\0';
+   for(int i=0; i<strlen(s); i++){
+      printf("%c",s[i]);
+   }
    destroip(&P);
    return s;
 }
@@ -167,18 +114,6 @@ int main(void)
    printf("Infixa booleana? ");
    gets(e);
    printf("Posfixa: %s\n", posfixa(e));
-   char res[1];
-   res[0] = valor(posfixa(e));
-   printf(res[0]);
-   int valor;
-   if (res[0] == "V")
-   {
-      valor = 1;
-   }
-   else
-   {
-      valor = 0;
-   }
-   printf("Resultado: %d", valor);
+   // printf("Resultado: %d", valor(posfixa(e)));
    return 0;
 }
