@@ -1,7 +1,6 @@
 ﻿#include <stdio.h>
 #include <conio.h>
 
-
 #define dim 9
 int I[dim][dim] = {
    {0, 0, 0, 0, 0, 0, 0, 0, 0},

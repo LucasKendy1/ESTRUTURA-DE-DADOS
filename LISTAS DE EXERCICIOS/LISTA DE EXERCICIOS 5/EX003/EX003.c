@@ -14,16 +14,18 @@
 #define col(p)   ((p)%100) 
 
 int I[dim][dim] = {
-   {0, 0, 0, 0, 1, 0, 0, 0, 0},
-   {0, 0, 0, 1, 1, 1, 0, 0, 0},
-   {0, 0, 1, 1, 1, 1, 1, 0, 0},
-   {0, 1, 1, 1, 1, 1, 1, 1, 0},
-   {0, 0, 2, 0, 0, 0, 2, 0, 0},
-   {0, 0, 2, 0, 0, 0, 2, 0, 0},
-   {0, 0, 2, 0, 0, 0, 2, 0, 0},
-   {0, 0, 2, 2, 2, 2, 2, 0, 0},
+   {0, 0, 0, 0, 0, 0, 0, 0, 0},
+   {0, 0, 0, 0, 0, 0, 0, 0, 0},
+   {0, 0, 0, 0, 0, 0, 0, 0, 0},
+   {0, 0, 0, 0, 0, 0, 0, 0, 0},
+   {0, 0, 0, 0, 0, 0, 0, 0, 0},
+   {0, 0, 0, 0, 0, 0, 0, 0, 0},
+   {0, 0, 0, 0, 0, 0, 0, 0, 0},
+   {0, 0, 0, 0, 0, 0, 0, 0, 0},
    {0, 0, 0, 0, 0, 0, 0, 0, 0}
 }; 
+
+
 void exiba(int I[dim][dim]) {
    for(int i=-1; i<dim; i++) {
       _textcolor(8);
@@ -62,16 +64,17 @@ void inicia(int I[dim][dim], char *s) {
        puts("arquivo não encontrado");
        abort();
    }
+
    for(int i=0; i<dim; i++)
       for(int j=0; j<dim; j++)
-         fscanf(a,"%d",&I[i][j]);
+		fscanf(a,"%d",&I[i][j]);
    fclose(a);
 }
 
 int main() {
-   int i, j, n;
-	inicia(I[9][9]);
-   while( 1 ) {
+   	int i, j, n;
+	inicia(I,"imagem.txt");
+   	while( 1 ) {
       exiba(I);
       printf("\n\nNova cor (ou -1 para sair)? ");
       scanf("%d",&n);
@@ -81,6 +84,6 @@ int main() {
          scanf("%d,%d",&i,&j);
       } while( i < 0 || i >= dim || j < 0 || j >= dim );
       colorir(I,i,j,n);
-   }
+   	}
    return 0;
 }

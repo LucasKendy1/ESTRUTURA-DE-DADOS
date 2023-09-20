@@ -1,5 +1,6 @@
 {
   "files.associations": {
-    "fila.h": "c"
+    "fila.h": "c",
+    "EX002.C": "cpp"
   }
 }
