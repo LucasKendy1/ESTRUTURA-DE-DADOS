@@ -1,3 +1,5 @@
+// Ex:004
+
 /*
    Com base nos algoritmos descritos, crie um programa para ler uma expressão booleana comple-tamente parentesiada e exibir sua forma posfixa correspondente, bem como seu valor numérico.
 
@@ -18,6 +20,7 @@
 #include <string.h>
 #include "pilha.h"
 
+<<<<<<< Updated upstream
 // int valor(char *e)
 // {
 //    Pilha P = pilha(256);
@@ -58,6 +61,99 @@
 //    destroip(&P);
 //    return z;
 // }
+=======
+int Opou(char x, char y)
+{
+   if (x == 'V')
+      x = 1;
+   else
+      x = 0;
+   if (y == 'V')
+      y = 1;
+   else
+      y = 0;
+   if (x == 1 || y == 1)
+   {
+      return 1;
+   }
+   else
+   {
+      return 0;
+   }
+   printf("%d", x);
+   printf("%d\n", y);
+}
+
+int Ope(char x, char y)
+{
+   if (x == 'V')
+      x = 1;
+   else
+      x = 0;
+   if (y == 'V')
+      y = 1;
+   else
+      y = 0;
+   if (x == 1 && y == 1)
+   {
+      return 1;
+   }
+   else
+   {
+      return 0;
+   }
+   printf("%d", x);
+   printf("%d\n", y);
+}
+
+int OpInv(char x)
+{
+   if (x == 'V')
+      x = 0;
+   if (x == 'F')
+      x = 1;
+   printf("%d", x);
+   return x;
+}
+
+int valor(char *e)
+{
+   Pilha P = pilha(256);
+   for (int i = 0; e[i]; i++)
+   {
+      if (e[i] == 'V' || e[i] == 'F')
+      {
+         //  printf("%c",e[i]);
+         empilha(e[i], P);
+      }
+
+      else
+      {
+         if (e[i] == '!')
+         {
+            int x = desempilha(P);
+            empilha(OpInv(x), P);
+         }
+         int y = desempilha(P);
+         int x = desempilha(P);
+
+         switch (e[i])
+         {
+         case '|':
+            empilha(Opou(x, y), P);
+            break;
+         case '&':
+            empilha(Ope(x, y), P);
+            break;
+         }
+      }
+   }
+
+   int z = desempilha(P);
+   destroip(&P);
+   return z;
+}
+>>>>>>> Stashed changes
 
 int prio(char o)
 {
@@ -79,9 +175,10 @@ char *posfixa(char *e)
    int j = 0;
    Pilha P = pilha(256);
 
-   for (int i = 0; e[i]; i++)
-      if (e[i] == '(')
+   for (int i = 0; e[i]; i++){
+      if (e[i] == '('){
          empilha('(', P);
+<<<<<<< Updated upstream
       else if (e[i] == 'V')
          s[j++] = 1;
       else if (e[i] == 'F')
@@ -89,17 +186,29 @@ char *posfixa(char *e)
       else if (strchr("!&|", e[i]))
       {
          while (!vaziap(P) && prio(topo(P)) >= prio(e[i]))
+=======
+      }
+      else if (e[i] == 'V' || e[i] == 'F'){
+         s[j++] = e[i];
+      }
+      else if (strchr("!&|", e[i])){
+         while (!vaziap(P) && prio(topo(P)) >= prio(e[i])){
+>>>>>>> Stashed changes
             s[j++] = desempilha(P);
+         }  
          empilha(e[i], P);
       }
-      else if (e[i] == ')')
-      {
-         while (topo(P) != '(')
+      else if (e[i] == ')'){
+         while (topo(P) != '('){
             s[j++] = desempilha(P);
+         }
          desempilha(P);
       }
-   while (!vaziap(P))
+   }
+      
+   while (!vaziap(P)){
       s[j++] = desempilha(P);
+   }
    s[j] = '\0';
    for(int i=0; i<strlen(s); i++){
       printf("%c",s[i]);
@@ -111,9 +220,13 @@ char *posfixa(char *e)
 int main(void)
 {
    char e[513];
-   printf("Infixa booleana? ");
+   printf("Infixa? ");
    gets(e);
    printf("Posfixa: %s\n", posfixa(e));
+<<<<<<< Updated upstream
    // printf("Resultado: %d", valor(posfixa(e)));
+=======
+   printf("Resultado: %d", valor(posfixa(e)));
+>>>>>>> Stashed changes
    return 0;
 }
