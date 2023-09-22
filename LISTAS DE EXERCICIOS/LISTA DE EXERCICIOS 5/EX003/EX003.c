@@ -73,7 +73,7 @@ void inicia(int I[dim][dim], char *s) {
 
 int main() {
    	int i, j, n;
-	inicia(I,"imagem.txt");
+	inicia(I,"imagem2.txt");
    	while( 1 ) {
       exiba(I);
       printf("\n\nNova cor (ou -1 para sair)? ");
