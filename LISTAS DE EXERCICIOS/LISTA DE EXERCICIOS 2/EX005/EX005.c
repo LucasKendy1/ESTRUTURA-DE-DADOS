@@ -16,7 +16,7 @@ int main(void) {
     // while( vaziap(P) == 0 ){
     //     printf("%c", desempilha(P));
     // } 
-    // while( !vaziap(P) ) puts(desempilha(P));
+    while( !vaziap(P) ) puts(desempilha(P));
 
     return 0;
 }

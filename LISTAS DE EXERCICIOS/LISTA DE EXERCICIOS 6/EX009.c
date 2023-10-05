@@ -15,15 +15,16 @@ int par(int n){
 }
 
 int main(){
+    
     int n;
     printf("Digite um numero: ");
     scanf("%d", &n);
 
     if(par(n)!=1){
-        printf("%d não é par",n);
+        printf("%d nao e par",n);
     }
     else{
-        printf("%d é par",n);
+        printf("%d e par",n);
     }
 
     return 0;
